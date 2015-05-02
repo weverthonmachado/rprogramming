@@ -30,19 +30,19 @@ m
 
 ## Factors
 x<-factor(c("yes", "yes", "no", "yes", "no"))
-x   # o R definiu a ordem dos fatores pela ordem alfabética
+x   # o R definiu a ordem dos fatores pela ordem alfab?tica
 table(x)
 unclass(x) # no=1, yes=2
 
  # eu posso definir a ordem que quiser par os fatores, com o arg "levels
 x<-factor(c("yes", "yes", "no", "yes", "no"),
           levels=c("yes", "no"))
-x # agora a primeira categoria (que será a baseline em modelos) é yes
+x # agora a primeira categoria (que ser? a baseline em modelos) ? yes
 
 ## Missing values
 
-# NA ou NaN (para operações matemáticas)
-# Todo NaN é também NA, o inverso não é verdadeiro
+# NA ou NaN (para opera??es matem?ticas)
+# Todo NaN ? tamb?m NA, o inverso n?o ? verdadeiro
 
 x<- c(1, 2, NA, 10, 3)
 is.na(x)
@@ -77,9 +77,9 @@ m
 # Reading tabular data
 #-------------------------------
 
-# Para datasets pequenos e médios, a função read.table (e read.csv) pode ser rodada com o mínimo de
-# argumentos. Para datasets grande, é recomendável otimizar adiantando algumas informações pro R, 
-# como as classes de cada coluna (colClasses). Um modo básico de descobrir os tipos de dados
+# Para datasets pequenos e m?dios, a fun??o read.table (e read.csv) pode ser rodada com o m?nimo de
+# argumentos. Para datasets grande, ? recomend?vel otimizar adiantando algumas informa??es pro R, 
+# como as classes de cada coluna (colClasses). Um modo b?sico de descobrir os tipos de dados
 # em cada coluna e dizer pro R:
 initial<-read.table("datatable.txt", nrows=100)
 classes<-sapply(initial, class)
@@ -89,10 +89,10 @@ tabAll<-read.table("datatable.txt", colClasses=classes)
 # Textual data formats
 #---------------------------
 
-# dump e dput preservam metadados (mas sacrificando um pouco a leitura e o espaço)
+# dump e dput preservam metadados (mas sacrificando um pouco a leitura e o espa?o)
 setwd("C:\\Users\\Weverthon\\Dropbox\\Coursera\\R programming")
 
-#dput só pode ser usado com um objeto
+#dput s? pode ser usado com um objeto
 y<- data.frame(a=1, b="a")
 y
   dput(y)
@@ -100,7 +100,7 @@ dput(y, file="dput.R")
 new.y<- dget("dput.R")
 new.y
 
-#dump pode ser usado com vários
+#dump pode ser usado com v?rios
 x<-"foo"
 y<- data.frame(a=1, b="a")
 dump(c("x", "y"), file="dump.R")
@@ -114,7 +114,7 @@ source("dump.R")
 con<-file("file.txt", "r")
 data<-read.csv(con)
 close(con)
-# é o mesmo que:
+# ? o mesmo que:
 data<-read.csv("file.txt")
 
 con<-url("http://www.jhsph.edu", "r")
@@ -153,13 +153,13 @@ x["bar"]
 x<- list(foo=1:4, bar=0.6, baz="hello")
 x[c(1,3)]
 
-# Eu posso criar um vetor para usar como índice.
+# Eu posso criar um vetor para usar como ?ndice.
 # Nesse caso, preciso usar [[]]
 
 name<-"foo"
 x[[name]]
 
-x$name # não funciona pq o $ procura elemento com o nome exato
+x$name # n?o funciona pq o $ procura elemento com o nome exato
 x$foo
 
 # [[ pode ser usado com uma sequencia de numeros inteiros
@@ -172,38 +172,38 @@ x[[c(2,1)]]
 
 ## Matrices
 x<-matrix(1:6,2,3)
-x[1,2] # índice [linha, coluna]
+x[1,2] # ?ndice [linha, coluna]
 
 x[1,]
 
-# Por padrão, susetting um único elemento de uma matriz retorna um vetor,
-# e não uma matriz 1x1. Para mudar (ou seja, preservando as dimensões:
+# Por padr?o, susetting um ?nico elemento de uma matriz retorna um vetor,
+# e n?o uma matriz 1x1. Para mudar (ou seja, preservando as dimens?es:
 x[1,2, drop=FALSE]
 x[1, , drop=FALSE]
 
 
 ## Partial matching
 
-# útil no uso interativo, não para escrever funções. Funciona com $ e [[]]
+# ?til no uso interativo, n?o para escrever fun??es. Funciona com $ e [[]]
 
 x<-list(aardwack=1:5)
 x$a
 
-x[["a"]] # não funciona. por padrão [[]] procura nome exato
+x[["a"]] # n?o funciona. por padr?o [[]] procura nome exato
 x[["a", exact=FALSE]]
 
 
 ## Removing missig data
 x<-c(1, 2, NA, 4, NA, 5)
-bad<-is.na(x) # crio um vetor lógico identificando os missing
-x[!bad] # (!=não)
+bad<-is.na(x) # crio um vetor l?gico identificando os missing
+x[!bad] # (!=n?o)
 
-# Com múltiplos objetos (util pra data frame)
+# Com m?ltiplos objetos (util pra data frame)
 
 # Vectorizes operations
 #-----------------------
 
-# Faz operações em paralelo, sem precisar de loops
+# Faz opera??es em paralelo, sem precisar de loops
 
 x<-1:4
 y<-6:9
@@ -215,14 +215,14 @@ y==8
 x*y
 x/y
 
-# tbm é possivel fazer com matrizes
+# tbm ? possivel fazer com matrizes
 x<-matrix(1:4,2,2)
 y<-matrix(rep(10,4),2,2)
 
-x*y #operações elemento por elemento
+x*y #opera??es elemento por elemento
 x/y
 
-x%*%y # multiplicação das matrizes
+x%*%y # multiplica??o das matrizes
 
 
 
@@ -233,16 +233,16 @@ x%*%y # multiplicação das matrizes
 # Control structures
 # -----------------------
 
-# Permitem controlar o fluxo do código
+# Permitem controlar o fluxo do c?digo
 
 
 ## If-else
 
-# Teste lógico de uma condição
+# Teste l?gico de uma condi??o
 
 if(<condition>) {
   <do something>
-} else {    # o else é original, é possível não faer nada se a condição for falsa
+} else {    # o else ? original, ? poss?vel n?o faer nada se a condi??o for falsa
   <do something different>
 }
 
@@ -255,7 +255,7 @@ if(<condition>) {
 }
 
 
-# Duas estruturas válidas:
+# Duas estruturas v?lidas:
 
 if(x>3){
       y <-10
@@ -263,7 +263,7 @@ if(x>3){
       y<-0
 }
 
-# é o mesmo que:
+# ? o mesmo que:
 
 y<- if(x>3){
         10
@@ -353,7 +353,7 @@ above<- function(x, n = 10) { #posso especificar 10 como valor default
   x[use]
 }
 
-# calcula médias por coluna em uma matriz/data.freame
+# calcula m?dias por coluna em uma matriz/data.freame
 columnmean<- function(y){
             nc<-ncol(y)
             means<- numeric(nc)
@@ -364,7 +364,7 @@ columnmean<- function(y){
 }
 
 columnmean(airquality)
-        # duas primeiras colunas constam como NAs. Vamos especificar uma opção pra resolver:
+        # duas primeiras colunas constam como NAs. Vamos especificar uma op??o pra resolver:
 
 columnmean<- function(y, removeNA=T){
     nc<-ncol(y)
@@ -379,8 +379,8 @@ columnmean(airquality)
 
 ## Scoping rules
 
-# Na hora de definir o valor de uma variável livre, o R procura o símbolo primeiro
-# no ambiente em que a função foi definida (o que pode inclusive outra função) 
+# Na hora de definir o valor de uma vari?vel livre, o R procura o s?mbolo primeiro
+# no ambiente em que a fun??o foi definida (o que pode inclusive outra fun??o) 
 
 
 
@@ -394,7 +394,7 @@ columnmean(airquality)
 ## lapply
 
  # function (X, FUN, ...) 
- # aplica uma função a todos os objetos de uma lista
+ # aplica uma fun??o a todos os objetos de uma lista
 
 x<-list(a=1:5, b=rnorm(10))
 lapply(x, mean)
@@ -406,14 +406,14 @@ x <- 1:4
 lapply(x, runif)
 
 x <- 1:4
-lapply(x, runif, min=0, max=10) #passando argumento adicionais da função
-                                # runif através do argumento ... da lapply
+lapply(x, runif, min=0, max=10) #passando argumento adicionais da fun??o
+                                # runif atrav?s do argumento ... da lapply
 
 x <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
 lapply(x, function(elt) elt[,1])
-            # essa é uma função "anônima", que só existe nessa chamada
-            # da lapply. Ou seja, é possível criar uma função simples
-            # sem precisar nomeá-la, caregá-la no environment, etc
+            # essa ? uma fun??o "an?nima", que s? existe nessa chamada
+            # da lapply. Ou seja, ? poss?vel criar uma fun??o simples
+            # sem precisar nome?-la, careg?-la no environment, etc
 
 
 ## sapply
@@ -421,8 +421,8 @@ lapply(x, function(elt) elt[,1])
   # variante de lapply que tenta simplificar o resultado
 
 x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
-lapply(x, mean) #retorna lista com médias
-sapply(x, mean) #retorna vetor com médias
+lapply(x, mean) #retorna lista com m?dias
+sapply(x, mean) #retorna vetor com m?dias
 
 
 ## apply
@@ -432,10 +432,10 @@ sapply(x, mean) #retorna vetor com médias
 
 x <- matrix(rnorm(200), 20, 10)
 apply(x, 2, mean) # 2=colunas: estou "mantendo" as colunas e calculando
-                  # as médias através de todas as linhas de cada coluna
+                  # as m?dias atrav?s de todas as linhas de cada coluna
 apply(x, 1, sum)
                   # colSums, rowSums, colMeans e rowMeans sao mais
-                  # rápidas nesses caso
+                  # r?pidas nesses caso
 
 x <- matrix(rnorm(200), 20, 10)
 apply(x, 1, quantile, probs = c(0.25, 0.75))
@@ -448,7 +448,7 @@ rowMeans(a, dims = 2)
 
 ## mapply
 
-   # aplica função a mais de um objeto, usados como argumentos
+   # aplica fun??o a mais de um objeto, usados como argumentos
 
 #em vez de:
 list(rep(1, 4), rep(2, 3), rep(3, 2), rep(4, 1))
@@ -463,8 +463,8 @@ noise(5, 1, 2)
 
 noise(1:5, 1:5, 2)
 mapply(noise, 1:5, 1:5, 2) # nesse caso, o mapply possibilitou
-                           # operaçã vetorizada em uma função que
-                           # que não possibilitava isso
+                           # opera?? vetorizada em uma fun??o que
+                           # que n?o possibilitava isso
 
 
 ## tapply
@@ -475,3 +475,83 @@ mapply(noise, 1:5, 1:5, 2) # nesse caso, o mapply possibilitou
 x <- c(rnorm(10), runif(10), rnorm(10, 1))
 f <- gl(3, 10)
 f
+
+## split
+
+
+# Debugging tools
+# -------------------
+
+## Diagnosing the problem: messages, warnings, errors
+
+## Basic tools:
+
+# traceback
+mean(x)
+traceback()
+
+lm(y ~ x)
+traceback()
+      # erro ocorre no sÃ©timo passo
+
+
+# debug
+debug(lm)
+lm(y~x)
+
+
+# recover
+options(error=recover)
+read.csv("nosuchfile")
+
+
+##########
+# Week 4 #
+##########
+
+# Simulation
+#------------------
+
+## Random numbers
+
+# VÃ¡rias funÃ§Ãµes com r (gera nÃºmeros), d (avalia densidade), p (probabilidade)
+# e q (quantis). Ex: rnorm, rpois, dnorm, rbinom, etc
+
+## Simulating from a linear model
+set.seed(20)
+x<-rnorm(100)
+e<-rnorm(100, 0, 2)
+y<-0.5+2*x+e
+summary(y)
+plot(x,y)
+
+
+set.seed(10)
+x<-rbinom(100, 1, 0.5)
+e<-rnorm(100, 0, 2)
+y<-0.5+2*x+e
+summary(y)
+plot(x,y)
+
+# generalized linear model
+set.seed(1)
+x<-rnorm(100)
+log.mu<-0.5+0.3*x
+y<-rpois(100, exp(log.mu))
+summary(y)
+plot(x,y)
+
+## Random sample
+set.seed(1)
+sample(1:10, 4)
+sample(1:10, 4)
+
+sample(letters, 5)
+
+sample(1:10)
+
+sample(1:10, replace=TRUE)
+
+
+# R profiler
+# --------------------
