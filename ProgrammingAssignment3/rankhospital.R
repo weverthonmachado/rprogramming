@@ -17,7 +17,7 @@ rankhospital <-function(state, outcome, num= "best") {
       }
       statedata<-data[data[,2]==state,]
       statedata[statedata=="Not Available"]<-NA
-      rank<-order(as.numeric(statedata[,out]), rev(statedata[,1]), na.last=NA)
+      rank<-order(as.numeric(statedata[,out]), statedata[,1], na.last=NA)
       
       i<- if (num=="best") {
             rank[1]

@@ -17,6 +17,6 @@ best <-function(state, outcome) {
       }
       statedata<-data[data[,2]==state,]
       statedata[statedata=="Not Available"]<-NA
-      i<-order(as.numeric(statedata[,out]), rev(statedata[,1]), na.last=NA)[1]
+      i<-order(as.numeric(statedata[,out]), statedata[,1], na.last=NA)[1]
       statedata[i, 1]
 }
